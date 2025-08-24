@@ -33,21 +33,28 @@ The bot emphasizes user privacy, multilingual support, and specialized handling 
 ## Bot Workflow
 
 ```mermaid
-graph TD
-    Start[/start] --> Language[Language Selection]
+flowchart TD
+    Start[/Start/] --> Language[Select Language]
     Language --> Main[Main Menu]
-    Main -->|Complaint| Category[Complaint Category]
-    Main -->|Suggestion| Suggestion[Enter Suggestion]
-    Category -->|Theft| Theft[Theft Reporting Workflow]
+
+    Main -->|Report Issue| Category[Choose Category]
+    Main -->|Give Suggestion| Suggestion[Enter Suggestion]
+
+    Category -->|Theft| Theft[Report Theft]
     Category -->|Other| Complaint[Enter Complaint]
-    Theft --> Owner[Own or Others?]
-    Owner --> Reported[Reported to Police?]
-    Reported --> Details[Enter Item, Name, Location, Date/Time]
-    Details --> Submit[Submit Report]
-    Complaint --> Submit
-    Suggestion --> Submit
+
+    Theft --> Owner[Is the item yours or someone else's?]
+    Owner --> Reported[Have you reported it to the police?]
+    Reported --> Details[Enter Item Details]
+    Details --> Review[Review & Confirm Submission]
+
+    Complaint --> Review
+    Suggestion --> Review
+
+    Review --> Submit[Submit Report]
     Submit --> Admin[Forward to Admin]
-    Submit --> User[Confirmation to User]
+    Submit --> User[Show Confirmation & Tracking ID]
+
 ```
 
 ## Prerequisites
